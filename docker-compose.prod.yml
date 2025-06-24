@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: code-sync-server-prod
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      target: runner
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    networks:
+      - Code-Sync-Prod
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  client:
+    container_name: code-sync-client-prod
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: runner
+    environment:
+      - VITE_BACKEND_URL=http://localhost:3000
+    networks:
+      - Code-Sync-Prod
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    restart: unless-stopped
+
+networks:
+  Code-Sync-Prod:
+    driver: bridge 

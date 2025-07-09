@@ -22,7 +22,7 @@ Code Synchronizatrion Application
 
 ## 🚀 Live Preview
 
-You can view the live preview of the project [here](https://code-sync-live.vercel.app/).
+You can view the live preview of the project [here](https://akash-codecollab-ret3.vercel.app/).
 
 ## 💻 Tech Stack
 
